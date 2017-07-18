@@ -1,0 +1,13 @@
+print ("-" * 30)
+print ("PRODUCT APPLICATION")
+print ("-" * 30)
+print ("Welcome Lee's CRUD Application!\n")
+print ("There are products in the database. Please select an operation:\n")
+
+print ("   operation | description")
+print ("   --------- | ------------------------------------------------")
+print ("   'list'    | Display a list of product identifiers and names.")
+print ("   'show'    | Show information about a product.")
+print ("   'Create'  | Add a new product.")
+print ("   'Update'  | Edit an existing product.")
+print ("   'Destroy' | Delete an existing product.")
