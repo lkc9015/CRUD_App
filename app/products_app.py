@@ -22,7 +22,7 @@ print ("   'Show'    | Show information about a product.")
 print ("   'Create'  | Add a new product.")
 print ("   'Update'  | Edit an existing product.")
 print ("   'Destroy' | Delete an existing product.")
-print ("")
+print (" ")
 
 user_input = input()
 user_input = user_input.title()
