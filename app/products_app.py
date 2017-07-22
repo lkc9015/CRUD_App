@@ -6,7 +6,7 @@ csv_file_path = "data\products.csv"
 with open(csv_file_path, "r") as csv_file:
     reader = csv.DictReader(csv_file)
     for row in reader:
-        products.append(row)
+        products.append(dict(row))
 
 print ("-" * 30)
 print ("PRODUCT APPLICATION")
@@ -31,27 +31,33 @@ def list_output():
     print ("Listing products")
     print (" + THERE ARE " + str(len(products)) + " PRODUCTS")
     for product in products:
-    print(product)
+        print (" + " + str(product))
 
-def show_output(user_input_id):
+def show_output():
     user_input_id = input("Okay. Please specify the product's identifier: ")
-    matching_product = [product for product in products if product["id"] == user_input_id]
-    return matching_product [0]
-    product_show = show_output(user_input_id)
+    matching_product = [product for product in products if product["id"] == user_input_id][0]
     print ("Showing a product")
-    print (product_show)
+    print (matching_product)
 
 def create_output():
     print ("Creating a product")
-    product_name = input("Hey what do you want to name the new product")
+    product_name = input("What is the name?: ")
+    product_aisle = input("What is the aisle?: ")
+    product_department = input("what is the department?: ")
+    product_price = input("What is the price? (just write the number): ")
     new_product = {
         "id": len(products) + 1,
+        "name": product_name,
+        "aisle": product_aisle,
+        "department": product_department,
+        "price": product_price
         }
+    print("New product is: ", new_product)
 
 if user_input == "List":
     list_output()
 elif user_input == "Show":
-    show_output(user_input_id)
+    show_output()
 elif user_input == "Create":
     create_output()
 elif user_input == "Update":
