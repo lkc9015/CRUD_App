@@ -34,8 +34,8 @@ def list_output():
         print (" + " + str(product))
 
 def show_output():
-    user_input_id = input("Okay. Please specify the product's identifier: ")
-    matching_product = [product for product in products if product["id"] == user_input_id][0]
+    show_input_id = input("Okay. Please specify the product's identifier: ")
+    matching_product = [product for product in products if product["id"] == show_input_id][0]
     print ("Showing a product")
     print (matching_product)
 
@@ -53,6 +53,27 @@ def create_output():
         "price": product_price
         }
     print("New product is: ", new_product)
+    products.append(new_product)
+
+def update_output ():
+    update_input_id = input("Okay, Please specify the product's identifier: ")
+    product = [product for product in products if product["id"] == update_input_id][0]
+    print ("The product is: " + str(product))
+    update_product_name = input ("Change its name from " + product["name"] + " to: ")
+    update_product_aisle = input ("Change its aisle from " + product["aisle"] + " to: ")
+    update_product_department = input ("Change its name from " + product["department"] + " to: ")
+    update_product_price = input ("Change its name from " + product["price"] + " to: ")
+    updated_product = {
+        "id": int(product["id"]),
+        "name": update_product_name,
+        "aisle": update_product_aisle,
+        "department": update_product_department,
+        "price": update_product_price
+    }
+    product.update(updated_product)
+    print ("Updating product here!")
+    print (product)
+
 
 if user_input == "List":
     list_output()
@@ -61,7 +82,7 @@ elif user_input == "Show":
 elif user_input == "Create":
     create_output()
 elif user_input == "Update":
-    print ("Updating a product")
+    update_output()
 elif user_input == "Destroy":
     print ("Destroying a product")
 else:
