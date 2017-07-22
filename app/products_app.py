@@ -110,7 +110,6 @@ def update_output ():
 def destroy_output():
     while True:
         try:
-
             destroy_product_id = input("\nOkay. Please specify the product's identifier: ")
             destroy_product = [product for product in products if product["id"] == destroy_product_id][0]
             print ("Destroying a product here!")
