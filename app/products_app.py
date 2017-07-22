@@ -27,52 +27,78 @@ print (" ")
 user_input = input()
 user_input = user_input.title()
 
+## List operation
 def list_output():
-    print ("Listing products")
-    print (" + THERE ARE " + str(len(products)) + " PRODUCTS")
+    print ("\nListing products")
+    print ("THERE ARE " + str(len(products)) + " PRODUCTS")
     for product in products:
         print (" + " + str(product))
 
+## Show operation
 def show_output():
-    show_input_id = input("Okay. Please specify the product's identifier: ")
+    show_input_id = input("\nOkay. Please specify the product's identifier: ")
     matching_product = [product for product in products if product["id"] == show_input_id][0]
-    print ("Showing a product")
+    print ("Showing a product here!")
     print (matching_product)
 
+## Create operation
 def create_output():
-    print ("Creating a product")
+    print ("\nCreating products")
     product_name = input("What is the name?: ")
     product_aisle = input("What is the aisle?: ")
     product_department = input("what is the department?: ")
-    product_price = input("What is the price? (just write the number): ")
+    while True:
+        try:
+            product_price = float(input("What is the price?: "))
+        except ValueError:
+            print ("Please input a price formatted as a number with two decimal places.")
+            continue
+        else:
+            break
     new_product = {
         "id": len(products) + 1,
         "name": product_name,
         "aisle": product_aisle,
         "department": product_department,
-        "price": product_price
+        "price": '{0:.2f}'.format(product_price)
         }
     print("New product is: ", new_product)
     products.append(new_product)
 
+## Update operation
 def update_output ():
-    update_input_id = input("Okay, Please specify the product's identifier: ")
+    update_input_id = input("\nOkay. Please specify the product's identifier: ")
     product = [product for product in products if product["id"] == update_input_id][0]
-    print ("The product is: " + str(product))
-    update_product_name = input ("Change its name from " + product["name"] + " to: ")
-    update_product_aisle = input ("Change its aisle from " + product["aisle"] + " to: ")
-    update_product_department = input ("Change its name from " + product["department"] + " to: ")
-    update_product_price = input ("Change its name from " + product["price"] + " to: ")
+    print ("The product is: " + str(product) + "\n")
+    update_product_name = input("Change its name from " + product["name"] + " to: ")
+    update_product_aisle = input("Change its aisle from " + product["aisle"] + " to: ")
+    update_product_department = input("Change its name from " + product["department"] + " to: ")
+    while True:
+        try:
+            update_product_price = float(input("Change its name from " + product["price"] + " to: "))
+        except ValueError:
+            print ("Please input a price formatted as a number with two decimal places.")
+            continue
+        else:
+            break
     updated_product = {
         "id": int(product["id"]),
         "name": update_product_name,
         "aisle": update_product_aisle,
         "department": update_product_department,
-        "price": update_product_price
+        "price": '{0:.2f}'.format(update_product_price)
     }
     product.update(updated_product)
     print ("Updating product here!")
     print (product)
+
+## Destroy operation
+def destroy_output():
+    destroy_product_id = input("\nOkay. Please specify the product's identifier: ")
+    destroy_product = [product for product in products if product["id"] == destroy_product_id][0]
+    print ("Destroying a product here!")
+    print (destroy_product)
+    products.remove(destroy_product)
 
 
 if user_input == "List":
@@ -84,7 +110,7 @@ elif user_input == "Create":
 elif user_input == "Update":
     update_output()
 elif user_input == "Destroy":
-    print ("Destroying a product")
+    destroy_output()
 else:
     print ("Unrecognized Operation. Please choose one of the recognized operations.")
 
