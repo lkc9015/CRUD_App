@@ -36,10 +36,17 @@ def list_output():
 
 ## Show operation
 def show_output():
-    show_input_id = input("\nOkay. Please specify the product's identifier: ")
-    matching_product = [product for product in products if product["id"] == show_input_id][0]
-    print ("Showing a product here!")
-    print (matching_product)
+    while True:
+        try:
+            show_input_id = input("\nOkay. Please specify the product's identifier: ")
+            matching_product = [product for product in products if product["id"] == show_input_id][0]
+            print ("Showing a product here!")
+            print (matching_product)
+        except IndexError:
+            print ("Please verify the product id")
+            continue
+        else:
+            break
 
 ## Create operation
 def create_output():
@@ -62,43 +69,58 @@ def create_output():
         "department": product_department,
         "price": '{0:.2f}'.format(product_price)
         }
-    print("New product is: ", new_product)
+    print("\nNew product is: ", new_product)
     products.append(new_product)
 
 ## Update operation
 def update_output ():
-    update_input_id = input("\nOkay. Please specify the product's identifier: ")
-    product = [product for product in products if product["id"] == update_input_id][0]
-    print ("The product is: " + str(product) + "\n")
-    update_product_name = input("Change its name from " + product["name"] + " to: ")
-    update_product_aisle = input("Change its aisle from " + product["aisle"] + " to: ")
-    update_product_department = input("Change its name from " + product["department"] + " to: ")
     while True:
         try:
-            update_product_price = float(input("Change its name from " + product["price"] + " to: "))
-        except ValueError:
-            print ("Please input a price formatted as a number with two decimal places.")
+            update_input_id = input("\nOkay. Please specify the product's identifier: ")
+            product = [product for product in products if product["id"] == update_input_id][0]
+            print ("The product is: " + str(product) + "\n")
+            update_product_name = input(" + Change its name from " + product["name"] + " to: ")
+            update_product_aisle = input(" + Change its aisle from " + product["aisle"] + " to: ")
+            update_product_department = input(" + Change its name from " + product["department"] + " to: ")
+            while True:
+                try:
+                    update_product_price = float(input(" + Change its name from " + product["price"] + " to: "))
+                except ValueError:
+                    print ("Please input a price formatted as a number with two decimal places.")
+                    continue
+                else:
+                    break
+            updated_product = {
+                "id": int(product["id"]),
+                "name": update_product_name,
+                "aisle": update_product_aisle,
+                "department": update_product_department,
+                "price": '{0:.2f}'.format(update_product_price)
+                }
+            product.update(updated_product)
+            print ("\nUpdating product here!")
+            print (product)
+        except IndexError:
+            print ("Please verify the product id.")
             continue
         else:
             break
-    updated_product = {
-        "id": int(product["id"]),
-        "name": update_product_name,
-        "aisle": update_product_aisle,
-        "department": update_product_department,
-        "price": '{0:.2f}'.format(update_product_price)
-    }
-    product.update(updated_product)
-    print ("Updating product here!")
-    print (product)
 
 ## Destroy operation
 def destroy_output():
-    destroy_product_id = input("\nOkay. Please specify the product's identifier: ")
-    destroy_product = [product for product in products if product["id"] == destroy_product_id][0]
-    print ("Destroying a product here!")
-    print (destroy_product)
-    products.remove(destroy_product)
+    while True:
+        try:
+
+            destroy_product_id = input("\nOkay. Please specify the product's identifier: ")
+            destroy_product = [product for product in products if product["id"] == destroy_product_id][0]
+            print ("Destroying a product here!")
+            print (destroy_product)
+            products.remove(destroy_product)
+        except IndexError:
+            print ("Please verigy the product id")
+            continue
+        else:
+            break
 
 
 if user_input == "List":
