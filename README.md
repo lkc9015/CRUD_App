@@ -3,6 +3,7 @@ CRUD application
 
 Welcome to Lee's Crud App!
 
+```shell
 There are five useful functions you can use through this app.
 It will help you manage your store effectively and efficiently!
 
@@ -20,6 +21,7 @@ It will help you manage your store effectively and efficiently!
 
 5. Destroy operation
 -- You can remove a product from your product list. 
+```
 
 ## Installation
 
