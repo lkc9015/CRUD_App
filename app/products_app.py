@@ -40,7 +40,7 @@ def show_output():
         try:
             show_input_id = input("\nOkay. Please specify the product's identifier: ")
             matching_product = [product for product in products if product["id"] == show_input_id][0]
-            print ("Showing a product here!")
+            print ("\nShowing a product here!")
             print (matching_product)
         except IndexError:
             print ("Please verify the product id")
