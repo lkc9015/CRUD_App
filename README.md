@@ -1,7 +1,7 @@
 # CRUD_App
 CRUD application
 
-Welcome to Lee Crud App!
+Welcome to Lee's Crud App!
 
 There are five useful functions you can use through this app.
 It will help you manage your store effectively and efficiently!
