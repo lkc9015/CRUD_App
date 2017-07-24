@@ -21,4 +21,19 @@ It will help you manage your store effectively and efficiently!
 5. Destroy operation
 -- You can remove a product from your product list. 
 
-Thank you!
+## Installation
+
+Download the source code:
+
+```shell
+git clone remote_clone_address_of_your_repo_here
+cd some/path/to/repo/
+```
+
+download the `products.csv` file(https://raw.githubusercontent.com/prof-rossetti/nyu-info-2335-70-201706/master/projects/crud-app/products.csv) and save it as `data/products.csv`.
+
+## Usage
+
+```shell
+python app/products_app.py
+```
