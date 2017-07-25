@@ -26,12 +26,14 @@ print (" ")
 
 user_input = input()
 user_input = user_input.title()
+
 ## List operation
 def list_output():
     print ("\nListing products")
     print ("THERE ARE " + str(len(products)) + " PRODUCTS")
     for product in products:
         print (" + " + str(product))
+
 ## Show operation
 def show_output():
     while True:
@@ -45,6 +47,7 @@ def show_output():
             continue
         else:
             break
+
 ## Create operation
 def create_output():
     print ("\nCreating products")
@@ -68,6 +71,7 @@ def create_output():
         }
     print("\nNew product is: ", new_product)
     products.append(new_product)
+
 ## Update operation
 def update_output ():
     while True:
@@ -101,6 +105,7 @@ def update_output ():
             continue
         else:
             break
+
 ## Destroy operation
 def destroy_output():
     while True:
@@ -115,6 +120,8 @@ def destroy_output():
             continue
         else:
             break
+
+
 if user_input == "List":
     list_output()
 elif user_input == "Show":
@@ -127,6 +134,8 @@ elif user_input == "Destroy":
     destroy_output()
 else:
     print ("Unrecognized Operation. Please choose one of the recognized operations.")
+
+
 other_path = "data\other_products.csv"
 with open(other_path, "w") as csv_file:
     writer = csv.DictWriter(csv_file, fieldnames=["id", "name", "aisle", "department", "price"])
